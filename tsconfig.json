@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-  ],
+, "color-pallette.js"  ],
   "exclude": ["node_modules"]
 }
