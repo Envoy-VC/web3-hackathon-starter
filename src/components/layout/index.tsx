@@ -3,7 +3,7 @@ import { Web3Provider, AntDesignConfigProvider } from '~/providers';
 import { ThemeProvider } from 'next-themes';
 
 import clsx from 'clsx';
-import { Navbar } from '~/components/common';
+import { Navbar, SEO } from '~/components/common';
 
 // Font
 import { Inter } from 'next/font/google';
@@ -19,6 +19,7 @@ const Layout = ({ children }: Props) => {
 			<AntDesignConfigProvider>
 				<Web3Provider>
 					<div className={clsx(inter.className)}>
+						<SEO />
 						<Navbar />
 						{children}
 					</div>
