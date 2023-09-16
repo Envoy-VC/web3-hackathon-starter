@@ -26,7 +26,7 @@ const useHackathon = create<HackathonWinsState>()((set) => ({
 const Home: NextPageWithLayout = () => {
 	const { wins, increase, decrease } = useHackathon();
 	return (
-		<div className='flex h-screen items-center justify-center border-2 p-24'>
+		<div className='flex h-screen items-center justify-center p-24'>
 			<div className='flex flex-col items-center gap-4 text-center text-3xl font-bold sm:flex-row'>
 				<span className='bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent'>
 					Hackathon Wins
