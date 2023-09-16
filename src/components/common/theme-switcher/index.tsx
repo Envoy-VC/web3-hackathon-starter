@@ -13,7 +13,7 @@ const ThemeSwitcher = () => {
 			shape='circle'
 			size='large'
 			icon={
-				theme === 'dark' ? <PiCloudSun size={20} /> : <PiCloudMoon size={20} />
+				theme === 'dark' ? <PiCloudSun size={24} /> : <PiCloudMoon size={24} />
 			}
 			onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 		/>
