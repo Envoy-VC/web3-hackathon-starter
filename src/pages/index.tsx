@@ -2,10 +2,10 @@ import type { ReactElement } from 'react';
 import { Layout } from '~/components';
 import type { NextPageWithLayout } from './_app';
 
-import { Button } from 'antd';
-import { PiCaretUpBold, PiCaretDownBold } from 'react-icons/pi';
-
 import { create } from 'zustand';
+import { Button } from 'antd';
+import toast from 'react-hot-toast';
+import { PiCaretUpBold, PiCaretDownBold } from 'react-icons/pi';
 
 interface HackathonWinsState {
 	wins: number;
@@ -36,12 +36,18 @@ const Home: NextPageWithLayout = () => {
 					<Button
 						icon={<PiCaretUpBold size={24} className='text-blue-400' />}
 						size='large'
-						onClick={increase}
+						onClick={() => {
+							increase();
+							toast.success('Hurray!', { icon: '😄' });
+						}}
 					/>
 					<Button
 						icon={<PiCaretDownBold size={24} className='text-blue-400' />}
 						size='large'
-						onClick={decrease}
+						onClick={() => {
+							decrease();
+							toast.success('NVM!', { icon: '😢' });
+						}}
 					/>
 				</div>
 			</div>

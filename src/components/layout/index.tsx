@@ -1,5 +1,9 @@
 import React from 'react';
-import { Web3Provider, AntDesignConfigProvider } from '~/providers';
+import {
+	Web3Provider,
+	AntDesignConfigProvider,
+	NotificationProvider,
+} from '~/providers';
 import { ThemeProvider } from 'next-themes';
 
 import clsx from 'clsx';
@@ -18,11 +22,13 @@ const Layout = ({ children }: Props) => {
 		<ThemeProvider attribute='class' enableSystem={false}>
 			<AntDesignConfigProvider>
 				<Web3Provider>
-					<div className={clsx(inter.className)}>
-						<SEO />
-						<Navbar />
-						{children}
-					</div>
+					<NotificationProvider>
+						<div className={clsx(inter.className)}>
+							<SEO />
+							<Navbar />
+							{children}
+						</div>
+					</NotificationProvider>
 				</Web3Provider>
 			</AntDesignConfigProvider>
 		</ThemeProvider>
