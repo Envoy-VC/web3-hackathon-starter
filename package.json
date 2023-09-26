@@ -11,12 +11,8 @@
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.0",
     "@t3-oss/env-nextjs": "^0.6.0",
-    "@thirdweb-dev/chains": "^0.1.51",
-    "@thirdweb-dev/react": "^3.14.41",
-    "@thirdweb-dev/sdk": "^3.10.60",
     "antd": "^5.9.1",
     "clsx": "^2.0.0",
-    "ethers": "^5.7.2",
     "next": "^13.4.19",
     "next-seo": "^6.1.0",
     "next-themes": "^0.2.1",

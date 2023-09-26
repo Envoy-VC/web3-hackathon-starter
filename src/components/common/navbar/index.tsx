@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
-import { ConnectWallet } from '@thirdweb-dev/react';
 import ThemeSwitcher from '../theme-switcher';
 
 // Icons
@@ -17,11 +16,6 @@ const Navbar = () => {
 				</div>
 				<div className='flex flex-row items-center gap-2'>
 					<ThemeSwitcher />
-					<ConnectWallet
-						btnTitle='Connect'
-						theme={!!theme && theme === 'dark' ? 'dark' : 'light'}
-						className='!bg-blue-500 !p-3 !text-white'
-					/>
 				</div>
 			</div>
 		</div>
