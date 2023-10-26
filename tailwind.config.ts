@@ -4,7 +4,9 @@ export default {
 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
-			colors: {},
+			colors: {
+				primary: '#0F61FF',
+			},
 		},
 	},
 	plugins: [],

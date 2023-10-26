@@ -5,11 +5,16 @@ export const env = createEnv({
 	/**
 	 * Client Side Environment Variables (prefixed with `NEXT_PUBLIC_`)
 	 */
-	client: {},
+	client: {
+		NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: z.string().min(1),
+	},
 	/**
 	 * Runtime Environment Variables (prefixed with `NEXT_PUBLIC_`)
 	 */
-	experimental__runtimeEnv: {},
+	experimental__runtimeEnv: {
+		NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID:
+			process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
+	},
 	/**
 	 * Skip validation of environment variables, for building without verifying the environment variables.
 	 */

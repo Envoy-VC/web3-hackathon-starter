@@ -1,56 +1,37 @@
 import type { ReactElement } from 'react';
 import { Layout } from '~/components';
 import type { NextPageWithLayout } from './_app';
-
-import { create } from 'zustand';
+import { useAccount, useConnect } from 'wagmi';
 import { Button } from 'antd';
-import toast from 'react-hot-toast';
-import { PiCaretUpBold, PiCaretDownBold } from 'react-icons/pi';
-
-interface HackathonWinsState {
-	wins: number;
-	increase: () => void;
-	decrease: () => void;
-}
-
-const useHackathon = create<HackathonWinsState>()((set) => ({
-	wins: 0,
-	increase: () => set((state) => ({ wins: state.wins + 1 })),
-	decrease: () =>
-		set((state) => {
-			if (state.wins !== 0) return { wins: state.wins - 1 };
-			return { wins: 0 };
-		}),
-}));
-
 const Home: NextPageWithLayout = () => {
-	const { wins, increase, decrease } = useHackathon();
+	const { address, connector: activeConnector, isConnected } = useAccount();
+	const { connect, connectors, error, isLoading, pendingConnector } =
+		useConnect();
 	return (
-		<div className='flex h-screen items-center justify-center p-24'>
-			<div className='flex flex-col items-center gap-4 text-center text-3xl font-bold sm:flex-row'>
-				<span className='bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent'>
-					Hackathon Wins
-				</span>
-				<span>🏆x {wins}</span>
-				<div className='flex flex-row gap-4 '>
+		<div className='h-screen p-24'>
+			<div className='mx-auto flex max-w-xl flex-col gap-2'>
+				{isConnected && (
+					<div className='flex flex-col'>
+						<div>Connected to {activeConnector?.name}</div>
+						<div>Address: {address}</div>
+					</div>
+				)}
+				{connectors.map((connector) => (
 					<Button
-						icon={<PiCaretUpBold size={24} className='text-blue-400' />}
+						type='primary'
 						size='large'
-						onClick={() => {
-							increase();
-							toast.success('Hurray!', { icon: '😄' });
-						}}
-					/>
-					<Button
-						icon={<PiCaretDownBold size={24} className='text-blue-400' />}
-						size='large'
-						onClick={() => {
-							decrease();
-							toast.success('NVM!', { icon: '😢' });
-						}}
-					/>
-				</div>
+						disabled={!connector.ready}
+						key={connector.id}
+						onClick={() => connect({ connector })}
+						className='bg-primary max-w-xs'
+					>
+						{connector.name}
+						{isLoading && pendingConnector?.id === connector.id && ' (connecting)'}
+					</Button>
+				))}
 			</div>
+
+			{error && <div>{error.message}</div>}
 		</div>
 	);
 };
