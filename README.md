@@ -33,7 +33,7 @@ To get started with the Web3 Hackathon Starter Kit, follow these simple steps:
 
 2. Install Dependencies: Navigate to the cloned repository and install the required dependencies by running the following command:
    ```bash
-   npm install
+   pnpm install
    ```
 3. Create a .env.local file: Create a `.env` file in the root directory of your project and add the following environment variables:
 
@@ -47,7 +47,7 @@ To get started with the Web3 Hackathon Starter Kit, follow these simple steps:
 4. Run the Project: Once you have installed the dependencies and added the required environment variables, you are ready to run the project. To start the development server, run the following command:
 
    ```bash
-    npm run dev
+    pnpm run dev
    ```
 
 ---
